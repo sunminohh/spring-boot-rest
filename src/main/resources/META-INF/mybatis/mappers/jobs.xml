@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rest.mapper.JobMapper">
+	<insert id="insertJob" parameterType="Job">
+		insert into jobs
+		(job_id, job_title, min_salary, max_salary)
+		values
+		(#{id}, #{title}, #{minSalary}, #{maxSalary})
+	</insert>
+	
+	<select id="getJobs" resultType="Job">
+		select 
+			job_id		as id,
+			job_title	as title,
+			min_salary	as minSalary,
+			max_salary	as maxSalary
+		from 
+			jobs
+		order by 
+			job_id asc
+	</select>	
+
+	<select id="getJobById" resultType="Job" parameterType="string">
+		select 
+			job_id		as id,
+			job_title	as title,
+			min_salary	as minSalary,
+			max_salary	as maxSalary
+		from 
+			jobs
+		where
+			job_id = #{value}
+	</select>	
+	
+	<update id="updateJob" parameterType="Job">
+		update 
+			jobs
+		set
+			job_title = #{title},
+			min_salary = #{minSalary},
+			max_salary = #{maxSalary}
+		where
+			job_id = #{id}
+	</update>
+	
+	<delete id="deleteJobById" parameterType="string">
+		delete from 
+			jobs
+		where 
+			job_id = #{value}
+	</delete>
+</mapper>
