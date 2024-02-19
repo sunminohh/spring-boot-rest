@@ -1,1 +1,1 @@
-MyBatis, Oracle, REST_API practice
+MyBatis, Oracle, REST_API study
